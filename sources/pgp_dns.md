@@ -180,6 +180,8 @@ cp BB06757B.pub.asc BB06757B.pub.asc.txt
 
 Make up your text record. The format is:
 
+DOMAIN: [https://pgp.guide](https://pgp.guide)  
+
 ```
 @ 10800 IN OPENPGPKEY BB06757B
 @ 10800 IN OPENPGPKEY E616FA7221A1613E5B99206297966C06BB06757B
@@ -241,7 +243,18 @@ dig +short admin._pka.pgp.guide. TXT "v=pka1\;fpr=BB06757B\;uri=https://pgp.guid
 Test it with GPG. Rather than messing around with, and adding-from and deleting from live keyrings, you can do:
 
 ```
-echo "foo" | gpg --no-default-keyring --keyring /tmp/gpg-$$ --encrypt --armor --auto-key-locate pka -r admin@pgp.guide
+echo "bitkarrot" | gpg --no-default-keyring --keyring /tmp/gpg-$$ --encrypt --armor --auto-key-locate pka -r admin@pgp.guide
+echo "bitkarrot" | gpg  --encrypt --armor --auto-key-locate pka -r admin@pgp.guide
+
+echo "This is an encrypted message using the public key using the pka-lookups option in gnupg/openpgp..." | \
+gpg  --encrypt --armor --auto-key-locate pka -r admin@pgp.guide > pka-lookups-message.gpg && \
+open pka-lookups-message.gpg && cat pka-lookups-message
+
+TIME=$(date +%s) && echo "This is an encrypted message using the public key using the pka-lookups option in gnupg/openpgp at Time:$TIME" | gpg  --encrypt --armor --auto-key-locate pka -r randy.lee.mcmillan@gmail.com > pka-lookups-message.$TIME.txt.gpg && gpg -d pka-lookups-message.$TIME.txt.gpg && echo
+
+TIME=$(date +%s) && echo "This is an encrypted message using the public key using the pka-lookups option in gnupg/openpgp at Time:$TIME" | gpg  --encrypt --armor --auto-key-locate pka -r admin@pgp.guide > pka-lookups-message.$TIME.txt.gpg && gpg -d pka-lookups-message.$TIME.txt.gpg && echo
+
+
 ```
 (where you@you.com is the address of your primary key.)
 
