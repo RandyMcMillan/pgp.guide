@@ -140,7 +140,7 @@ report:## 	report
 
 
 init:
-	python3 -m pip install -r requirements.txt
+	python3 -m pip install -U -r requirements.txt
 docs: build
 build:
 	mkdocs build
@@ -148,7 +148,24 @@ serve: build
 	mkdocs serve & open http://127.0.0.1:$(PORT) || open http://127.0.0.1:$(PORT)
 	#$(PYTHON3) -m http.server $(PORT) --bind 127.0.0.1 -d $(PWD)/docs > /dev/null 2>&1 || open http://127.0.0.1:$(PORT)
 
-git-add:
+.PHONY: venv
+venv:## 	create python3 virtualenv .venv
+	test -d .venv || $(PYTHON3) -m virtualenv .venv
+	( \
+	   source .venv/bin/activate; pip install -r requirements.txt; \
+	);
+	@echo "To activate (venv)"
+	@echo "try:"
+	@echo ". .venv/bin/activate"
+	@echo "or:"
+	@echo "make test-venv"
+##:	test-venv            source .venv/bin/activate; pip install -r requirements.txt;
+test-venv:## 	test virutalenv .venv
+	# insert test commands here
+	test -d .venv || $(PYTHON3) -m virtualenv .venv
+	( \
+	   source .venv/bin/activate; pip install -r requirements.txt; \
+	);
 
 push:
 	@echo 'push'
