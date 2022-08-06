@@ -1,0 +1,43 @@
+# main links
+main:
+  - title: "About OpenPGP"
+    url: /about/
+
+  - title: "Software"
+    url: /software/
+
+  - title: "Community/Consulting"
+    url: /community/
+
+# about
+about:
+  - title: "About"
+    children:
+      - title: "About"
+        url: /about/
+      - title: "History"
+        url: /about/history/
+  - title: "Technical"
+    children:
+      - title: "Standard"
+        url: /about/standard/
+
+# software
+software:
+  - title: "Software"
+    children:
+      - title: "Email Encryption"
+        url: /software/
+      - title: "Server Software"
+        url: /software/server/
+      - title: "Developer Libraries/Tools"
+        url: /software/developer/
+      - title: "Misc Tools"
+        url: /software/misc/
+
+# community
+community:
+  - title: "Community/Consulting"
+    children:
+      - title: "Community/Consulting"
+        url: /community/
