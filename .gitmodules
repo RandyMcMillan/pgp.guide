@@ -1,0 +1,3 @@
+[submodule "source/openpgp.org"]
+	path = source/openpgp.org
+	url = https://github.com/OpenPGP/openpgp.org.git

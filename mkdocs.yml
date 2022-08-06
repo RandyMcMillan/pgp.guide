@@ -1,0 +1,32 @@
+site_name: Pretty Good Privacy Guide
+site_url: https://www.pgp.guide
+repo_url: https://github.com/pgp-guide/pgp.guide
+docs_dir: sources
+site_dir: docs
+
+theme:
+    name: material
+
+plugins:
+    - exclude:
+        glob:
+            - openpgp.org/vendor/bundle/**
+            - "*.tmp"
+            - "*.pdf"
+            - "*.gz"
+        regex:
+            - '.*\.(tmp|bin|tar)$'
+    - search
+      #     - redirects:
+      #         redirect_maps:
+      #             user-guide/plugins.md: dev-guide/plugins.md
+      #             user-guide/custom-themes.md: dev-guide/themes.md
+      #             user-guide/styling-your-docs.md: user-guide/choosing-your-theme.md
+
+markdown_extensions:
+    - pymdownx.striphtml:
+        strip_comments: true
+        strip_js_on_attributes: false
+
+copyright: Copyright &copy; 2014 <a href="https://twitter.com/_tomchristie">Tom Christie</a>, Maintained by the <a href="/about/release-notes/#maintenance-team">MkDocs Team</a>.
+

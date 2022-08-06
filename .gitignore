@@ -2,3 +2,6 @@ _site
 .sass-cache
 .jekyll-metadata
 Gemfile.lock
+docs/openpgp.org
+source/openpgp.org/.bundle/
+source/openpgp.org/vendor/
